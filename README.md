@@ -29,14 +29,22 @@ BCS is human-led and AI-accelerated, designed to empower creators rather than re
 
 Eight Specialized Modules
 Module	Role	AI Capability
-Bob Director™	Creative director	Interprets intent, routes tasks to specialist agents
-CanonCore™	Project memory	Stores and versions every confirmed fact for consistency
-Creator Mode™	Panel canvas	Visual layout editor with annotations and metadata
-CharacterForge™	Character designer	Generates full character profiles and arcs
-WorldForge™	World architect	Builds settings, factions, timelines, and rules
-PlotSmith™	Story architect	Creates 3‑act structures and panel-by-panel scripts
-CanonGuard™	Continuity editor	Detects inconsistencies and suggests fixes
-Publish Studio™	Export manager	Packages comics into PDF, CBZ, EPUB, or web formats
+
+1. Bob Director™	Creative director	Interprets intent, routes tasks to specialist agents
+
+2. CanonCore™	Project memory	Stores and versions every confirmed fact for consistency
+
+3. Creator Mode™	Panel canvas	Visual layout editor with annotations and metadata
+
+4. CharacterForge™	Character designer	Generates full character profiles and arcs
+
+5. WorldForge™	World architect	Builds settings, factions, timelines, and rules
+
+6. PlotSmith™	Story architect	Creates 3‑act structures and panel-by-panel scripts
+
+7. CanonGuard™	Continuity editor	Detects inconsistencies and suggests fixes
+
+8. Publish Studio™	Export manager	Packages comics into PDF, CBZ, EPUB, or web formats
 
 
 BCS removes the production barrier while keeping creators fully in control of their vision.
