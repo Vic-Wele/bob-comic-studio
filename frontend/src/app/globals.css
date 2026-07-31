@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ─── BCS Design System ─────────────────────────────────────────────────── */
+@theme inline {
+  /* Module accent colors — same in both themes */
+  --color-director:       #f5c842;
+  --color-canoncore:      #7c5cd8;
+  --color-creator:        #3b82f6;
+  --color-charforge:      #e84393;
+  --color-worldforge:     #10b981;
+  --color-plotsmith:      #f97316;
+  --color-canonguard:     #ef4444;
+  --color-publish:        #06b6d4;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Fira Code", monospace;
+  --font-display: "Georgia", "Times New Roman", serif;
+}
+
+/* ─── Dark theme (default) ──────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg:           #0d0d0f;
+  --surface:      #141418;
+  --panel:        #1a1a20;
+  --border:       #2a2a35;
+  --border-hi:    #3d3d50;
+  --ink:          #e8e4dc;
+  --ink-muted:    #7a7a8c;
+  --ink-faint:    #3a3a48;
+  --scrollbar-track: #141418;
+  --scrollbar-thumb: #2a2a35;
+  --scrollbar-hover: #3d3d50;
+}
+
+/* ─── Light theme ────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #f5f4f0;
+  --surface:      #ffffff;
+  --panel:        #f0ede8;
+  --border:       #d4d0c8;
+  --border-hi:    #b8b4aa;
+  --ink:          #1a1a1f;
+  --ink-muted:    #5a5a6a;
+  --ink-faint:    #9a9aaa;
+  --scrollbar-track: #f0ede8;
+  --scrollbar-thumb: #d4d0c8;
+  --scrollbar-hover: #b8b4aa;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Scrollbars ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+/* ─── Comic panel border style ──────────────────────────────────────────── */
+.panel-border {
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  position: relative;
+}
+
+.panel-border::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ─── Module tag badges ─────────────────────────────────────────────────── */
+.module-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Glow effects ───────────────────────────────────────────────────────── */
+.glow-director  { box-shadow: 0 0 12px rgba(245, 200, 66,  0.25); }
+.glow-canoncore { box-shadow: 0 0 12px rgba(124, 92,  216, 0.25); }
+.glow-creator   { box-shadow: 0 0 12px rgba(59,  130, 246, 0.25); }
+.glow-charforge { box-shadow: 0 0 12px rgba(232, 67,  147, 0.25); }
+.glow-worldforge{ box-shadow: 0 0 12px rgba(16,  185, 129, 0.25); }
+.glow-plotsmith { box-shadow: 0 0 12px rgba(249, 115, 22,  0.25); }
+.glow-canonguard{ box-shadow: 0 0 12px rgba(239, 68,  68,  0.25); }
+.glow-publish   { box-shadow: 0 0 12px rgba(6,   182, 212, 0.25); }
+
+/* ─── Transitions ───────────────────────────────────────────────────────── */
+.transition-fast { transition: all 0.15s ease; }

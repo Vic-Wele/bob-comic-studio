@@ -1,0 +1,28 @@
+# Python dependencies — Bob Comic Studio backend
+# Install: pip install -r requirements.txt
+
+# ── Web framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+
+# ── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+alembic==1.14.0
+
+# ── Cache ─────────────────────────────────────────────────────────────────────
+redis[asyncio]==5.2.1
+
+# ── IBM watsonx.ai (primary LLM provider) ────────────────────────────────────
+ibm-watsonx-ai==1.1.14
+
+# ── Validation & utilities ────────────────────────────────────────────────────
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+httpx==0.28.1
+
+# ── Dev / testing ─────────────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+httpx==0.28.1

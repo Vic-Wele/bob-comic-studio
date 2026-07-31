@@ -1,0 +1,77 @@
+services:
+
+  # ── PostgreSQL ──────────────────────────────────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    container_name: bcs_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bcs_user
+      POSTGRES_PASSWORD: bcs_password
+      POSTGRES_DB: bob_comic_studio
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schemas/001_initial.sql:/docker-entrypoint-initdb.d/001_schema.sql
+      - ./database/seed/demo_data.sql:/docker-entrypoint-initdb.d/002_seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bcs_user -d bob_comic_studio"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis (session cache + CanonCore fast lookup) ───────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: bcs_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bcs_backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://bcs_user:bcs_password@db:5432/bob_comic_studio
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # ── Next.js frontend ────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bcs_frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:
