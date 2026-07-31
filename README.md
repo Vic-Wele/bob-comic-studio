@@ -3,6 +3,8 @@ The AI Operating System for Visual Storytelling
 IBM AI Builders Challenge — July 2025  
 Challenge Theme: Reimagine Creative Industries with AI
 
+<img width="1238" height="737" alt="BCS-dashboard" src="https://github.com/user-attachments/assets/73d0ede3-2503-4627-afe4-0ffb5d843659" />
+
 ## Problem Statement
 Creating a comic book is one of the most demanding forms of storytelling. It requires simultaneous mastery of:
 
@@ -182,6 +184,10 @@ bob-comic-studio/
 │
 ├── docker-compose.yml
 └── README.md
+
+<img width="1246" height="731" alt="BCS-creator-mode" src="https://github.com/user-attachments/assets/e14bba68-9cca-4464-8d91-8854a6b44e84" />
+
+
 ## Demo Video
 A 3‑minute demo showcasing:
 
